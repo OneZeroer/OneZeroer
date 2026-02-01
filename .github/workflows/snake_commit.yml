@@ -12,8 +12,6 @@ on:
   push:
     branches:
     - master
-  
-  
 
 jobs:
   generate:
@@ -28,10 +26,13 @@ jobs:
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: ${{ github.repository_owner }}
+          # 新增：指定显示最近1年贡献
+          years: 1
+          # 新增：指定网格大小为52周×7天（对应1年完整贡献图）
+          grid_size: "52x7"
           outputs: |
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
-  
   
       # push the content of <build_dir> to a branch
       # the content will be available at https://raw.githubusercontent.com/<github_user>/<repository>/<target_branch>/<file> , or as github page
